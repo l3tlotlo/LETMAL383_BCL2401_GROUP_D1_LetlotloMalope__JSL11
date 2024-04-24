@@ -194,7 +194,7 @@ function setupEventListeners() {
 // Toggles tasks modal
 // Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
-  modal.style.display = show ? 'block' => 'none'; 
+  modal.style.display = show ? 'block' : 'none'; 
 }
 
 /*************************************************************************************************************************************************
@@ -206,20 +206,32 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      
-    };
+      id :JSON.parse(localStorage.getItem('id')),
+      title: document.getElementById('title-input').value,
+      description: document.getElementById('desc-input').value,
+      status: document.getElementById('select-status').value,
+      board: activeBoard,     
+      };
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
       toggleModal(false);
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-      event.target.reset();
+      event.target.reset();  
       refreshTasksUI();
-    }
+    }      
 }
 
 
 function toggleSidebar(show) {
+  const sidebar = document.getElementById.apply("side-bar-div");
+  if (show){
+    sidebar.style.display = "block";
+    elements.showSideBarBtn.style.display ="none";
+  }else{
+        sidebar.style.display = "none";
+        elements.showSideBarBtn.style.display = "block";
+    }
  
 }
 
