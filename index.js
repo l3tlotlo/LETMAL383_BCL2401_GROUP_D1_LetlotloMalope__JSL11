@@ -224,19 +224,25 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
-  const sidebar = document.getElementById.apply("side-bar-div");
+  const sidebar = document.getElementById('side-bar-div');
   if (show){
-    sidebar.style.display = "block";
-    elements.showSideBarBtn.style.display ="none";
+    sidebar.style.display = 'block'; // Show the sidebar
+    elements.showSideBarBtn.style.display ='none'; //hide the sidebar button
   }else{
-        sidebar.style.display = "none";
-        elements.showSideBarBtn.style.display = "block";
-    }
- 
+    sidebar.style.display = 'none'; // hide the sidebar
+    elements.showSideBarBtn.style.display ='block'; //show the sidebar button
+  } 
 }
 
 function toggleTheme() {
- 
+  const isLightTheme = elements.themeSwitch.checked;
+  if (isLightTheme){
+    localStorage.setItem("light-theme", "enabled");
+  } else
+  {
+    localStorage.setItem("light-theme", "disabled");
+  }
+  document.body.classList.toggle( "light-theme", isLightTheme);
 }
 
 
