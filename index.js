@@ -1,7 +1,8 @@
-// TASK: import helper functions from utils
-// TASK: import initialData
+//Import of helper functions from utils
+import {getTasks, createNewTask, putTask, deleteTask } from './utils';
 
-
+//Import of initialData
+import {initialData} from './initialData.js'
 /*************************************************************************************************************************************************
  * FIX BUGS!!!
  * **********************************************************************************************************************************************/
@@ -18,10 +19,18 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
+  headerBoardName: document.getElementById('header-board-name'),
+  columnDivs: document.getElementById('column-div'),
+  filterDiv: document.getElementById('filter-div'),
+  hideSideBarBtn: document.getElementById('hide-sidebar-btn'),
+  showSideBarBtn: document.getElementById('show-sidebar-btn'),
+  themeSwitch: document.getElementById('theme-switch'),
+  createNewTaskBtn: document.getElementById('create-new-task-btn'),
+  modalWindow: document.getElementById('modal-window'),
+  editTaskModal: document.getElementById('edit-task-modal'),
+};
 
-}
-
-let activeBoard = ""
+let activeBoard = '';
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -47,7 +56,7 @@ function displayBoards(boards) {
     const boardElement = document.createElement("button");
     boardElement.textContent = board;
     boardElement.classList.add("board-btn");
-    boardElement.click()  { 
+    boardElement.click() { 
       elements.headerBoardName.textContent = board;
       filterAndDisplayTasksByBoard(board);
       activeBoard = board //assigns active board
@@ -142,7 +151,7 @@ function addTaskToUI(task) {
 function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
-  cancelEditBtn.click() => toggleModal(false, elements.editTaskModal));
+  cancelEditBtn.click(); toggleModal(false, elements.editTaskModal));
 
   // Cancel adding new task event listener
   const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
