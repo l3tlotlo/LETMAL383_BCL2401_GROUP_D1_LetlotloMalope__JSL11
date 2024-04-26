@@ -13,10 +13,9 @@ function initializeData() {
     localStorage.setItem('tasks', JSON.stringify(initialData)); 
     localStorage.setItem('showSideBar', 'true')
   } else {
-    console.log('Data already exists in localStorage');
-  }  //Logged if data exists in local storage
+    console.log('Data already exists in localStorage');//Logged if data exists in local storage
+  }  
 }
-initializeData();
 
 // Object fetching elements from the DOM
 const elements = {
@@ -35,7 +34,6 @@ const elements = {
 let activeBoard = ""; 
 
 // Extracts unique board names from tasks
-
 function fetchAndDisplayBoardsAndTasks() {
   const tasks = getTasks();
   const boards = [...new Set(tasks.map(task => task.board).filter(Boolean))];  //
@@ -48,7 +46,6 @@ function fetchAndDisplayBoardsAndTasks() {
     refreshTasksUI();
   }
 }
-
 // Creates different boards in the DOM
 // TASK: Fix Bugs
 function displayBoards(boards) {
@@ -142,8 +139,8 @@ function addTaskToUI(task) {
   }
 
   const taskElement = document.createElement('div');
-  taskElement.className = 'task-div'; // change class name OR task-div
-  taskElement.textContent = task.title; // Modify as needed
+  taskElement.className = 'task-div'; 
+  taskElement.textContent = task.title; 
   taskElement.setAttribute('data-task-id', task.id);
   
   tasksContainer.appendChild(taskElement); 
@@ -188,7 +185,7 @@ function setupEventListeners() {
 
 // Toggles tasks modal visibility
 function toggleModal(show, modal = elements.modalWindow) {
-  modal.style.display = show ? 'block' : 'none'; 
+  modal.style.display = show ? 'block' : 'none'; //Debugged by replacing arrow function
 }
 
 /*************************************************************************************************************************************************
@@ -284,8 +281,7 @@ function saveTaskChanges(taskId) {
  
   // Close the modal and refresh the UI to reflect the changes
   toggleModal(false, elements.editTaskModal);
-
-
+  
   refreshTasksUI();
 }
 
